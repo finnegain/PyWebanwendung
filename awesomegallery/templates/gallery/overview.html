@@ -6,7 +6,24 @@
 </head>
 <body>
 
+<nav>
+    {% if user.is_authenticated %}
+        You are logged in as {{ user.username }}
+        <form method="post" action="{% url 'logout' %}" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+    {% else %}
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'register' %}">Register</a>
+    {% endif %}
+</nav>
+
 <h1>Welcome</h1>
+
+{% if user.is_authenticated %}
+    <p><a href="{% url 'upload' %}">Upload new Image</a></p>
+{% endif %}
 
 <ul>
     {% for image in images %}
