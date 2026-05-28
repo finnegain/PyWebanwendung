@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
 
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
@@ -18,5 +16,4 @@
     <a href="{% url 'register' %}">Register now</a>
 </p>
 
-</body>
-</html>
+{% endblock %}
